@@ -1,0 +1,137 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #0078D4;
+    margin-top: 20px;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 16px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+p {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Button styles */
+button {
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+#dance-button {
+    margin-top: 20px;
+    background-color: #ff9800;
+}
+
+#dance-button:hover {
+    background-color: #e68a00;
+}
+
+/* Dancing Spartacus (Sparty) styles */
+#cat-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Increased height for better animation visibility */
+    overflow: hidden;
+    margin-top: 20px;
+    background-color: #e0e0e0;
+}
+
+.cat {
+    position: absolute;
+    bottom: 0; /* Start at bottom of container */
+    width: 220px; /* Larger size for visibility */
+    animation: jump 3s infinite ease-in-out, wiggle 1s infinite ease-in-out;
+}
+
+/* Keyframes for jumping */
+@keyframes jump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-150px); /* Jump height */
+    }
+}
+
+/* Keyframes for wiggling */
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+}
+
+/* Animation for Sparty-Dance (Static Image) */
+.dancing-sparty {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    animation: sparty-dance 1s infinite ease-in-out;
+}
+
+@keyframes sparty-dance {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(5deg);
+    }
+    75% {
+        transform: translateY(-20px) rotate(-5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
