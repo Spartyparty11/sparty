@@ -191,4 +191,21 @@ h1 {
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #0078D4;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #005BB5;
+}
 
