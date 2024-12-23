@@ -6,144 +6,128 @@
     <title>Buy Now</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #ffe100;
+            --text-color: #000;
+            --cta-hover: #ff9900;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: black;
-            color: white;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #000; /* Black background for high contrast */
+            color: var(--text-color);
         }
 
         header {
-            background-color: #6a0dad;
+            background-color: var(--primary-color);
             padding: 20px;
+            text-align: center;
             color: white;
-            text-transform: uppercase;
-            font-weight: bold;
         }
 
-        h1 {
-            color: gold;
-            text-shadow: 0 0 10px gold, 0 0 20px red, 0 0 30px orange;
+        h1, h2 {
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff7300, 0 0 30px #ff0000;
         }
 
-        .flashing-offer {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
-            text-shadow: 0 0 20px red, 0 0 30px yellow, 0 0 40px green, 0 0 50px blue;
-            animation: flashy-blink 1s infinite alternate;
-            padding: 20px;
-            border: 5px solid #FFD700;
-            background-image: linear-gradient(to right, #FF4500, #FF6347, #FFD700);
-            border-radius: 15px;
-            display: inline-block;
-            margin: 20px auto;
+        .limited-offer {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            animation: flash 1s infinite alternate;
+            text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--primary-color);
         }
 
-        @keyframes flashy-blink {
+        @keyframes flash {
             0% {
-                text-shadow: 0 0 20px red, 0 0 30px yellow, 0 0 40px green, 0 0 50px blue;
-                background-image: linear-gradient(to right, #FF4500, #FF6347, #FFD700);
-                transform: scale(1);
-            }
-            50% {
-                text-shadow: 0 0 40px purple, 0 0 50px cyan, 0 0 60px pink, 0 0 70px lime;
-                background-image: linear-gradient(to right, #FFD700, #FF6347, #FF4500);
-                transform: scale(1.1);
+                opacity: 1;
             }
             100% {
-                text-shadow: 0 0 20px lime, 0 0 30px purple, 0 0 40px orange, 0 0 50px cyan;
-                background-image: linear-gradient(to right, #FF6347, #FFD700, #FF4500);
-                transform: scale(1);
+                opacity: 0.5;
             }
         }
 
-        .contact-form {
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            color: black;
-            max-width: 600px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px #FFD700;
+        .buy-section {
+            text-align: center;
+            margin: 50px 20px;
         }
 
-        .contact-form label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .contact-form input[type="text"], 
-        .contact-form input[type="email"], 
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 2px solid #FFD700;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .contact-form button {
-            background-color: #FF4500;
+        .buy-now-button {
+            background-color: var(--primary-color);
             color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            padding: 10px 20px;
+            padding: 20px 40px;
             border: none;
-            border-radius: 10px;
-            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
             text-transform: uppercase;
-            animation: button-glow 1.5s infinite alternate;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-shadow: 0 0 5px white, 0 0 10px #ff7300;
         }
 
-        @keyframes button-glow {
-            0% {
-                box-shadow: 0 0 10px #FFD700, 0 0 20px red, 0 0 30px orange;
-            }
-            100% {
-                box-shadow: 0 0 20px #FFD700, 0 0 30px yellow, 0 0 40px lime;
-            }
+        .buy-now-button:hover {
+            background-color: var(--cta-hover);
+        }
+
+        .not-sure-section {
+            text-align: center;
+            margin: 50px 20px;
+            background: linear-gradient(to right, #ff7300, #ff0000);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .not-sure-cta {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+            text-shadow: 0 0 5px white, 0 0 10px #000;
+        }
+
+        .not-sure-cta:hover {
+            background-color: var(--cta-hover);
+            transform: scale(1.1);
         }
 
         footer {
-            background-color: #6a0dad;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px;
-            margin-top: 20px;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
     <header>
-        Buy Now: The Ultimate Spartacus Offer!
+        <h1>Buy Now!</h1>
+        <p class="limited-offer">Limited Time Offer - Don't Miss Out!</p>
     </header>
 
-    <h1>Act Fast!</h1>
-    <div class="flashing-offer">
-        Limited Time Offer!
+    <div class="buy-section">
+        <p>Ready to make Spartacus a part of your life?</p>
+        <button class="buy-now-button">Buy Now!</button>
     </div>
 
-    <div class="contact-form">
-        <form action="https://example.com/submit" method="POST">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
-
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Your message here..." rows="5"></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
+    <div class="not-sure-section">
+        <h2>Not Sure?</h2>
+        <p>Still deciding? Check out Spartacus' greatest achievements to inspire you!</p>
+        <a href="carousel.html" class="not-sure-cta">View the Gallery</a>
     </div>
 
     <footer>
-        &copy; 2024 Spartacus. All Rights Reserved.
+        <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
-
