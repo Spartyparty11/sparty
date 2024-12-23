@@ -47,7 +47,7 @@
 
         .cat {
             position: absolute;
-            width: 150px;
+            width: 100px; /* Adjusted for proper sizing */
             animation: jump 3s infinite ease-in-out, wiggle 1s infinite ease-in-out;
         }
 
@@ -127,9 +127,35 @@
         a:hover {
             text-decoration: underline;
         }
+
+        nav {
+            background-color: #6a0dad;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <!-- Global Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="carousel.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <div class="content-section">
         <h1>About Spartacus</h1>
         <p>Spartacus is a legend, a hero, and a source of endless joy. Learn more about this majestic feline!</p>
@@ -184,7 +210,7 @@
                 spartacus.classList.add("cat");
 
                 // Randomize position
-                spartacus.style.left = Math.random() * (window.innerWidth - 150) + "px";
+                spartacus.style.left = Math.random() * (window.innerWidth - 100) + "px";
                 spartacus.style.bottom = "0"; /* Start at the bottom of the screen */
                 spartacus.style.animationDelay = Math.random() * 2 + "s"; /* Stagger animations */
 
