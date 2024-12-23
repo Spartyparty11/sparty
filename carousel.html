@@ -8,7 +8,7 @@
     <style>
         /* Carousel Styles */
         .carousel-container {
-            max-width: 1000px; /* Adjusted to accommodate larger images */
+            max-width: 800px;
             margin: 50px auto;
             text-align: center;
         }
@@ -18,21 +18,20 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%; /* Ensures carousel width matches the container */
-            height: 600px; /* Adjusted to fit larger images */
+            width: 100%; /* Ensures the carousel adapts to the container width */
+            height: 500px; /* Fixed height based on large image dimensions */
         }
 
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            height: 100%; /* Ensures container height matches images */
+            width: 100%; /* Ensure images fit perfectly within the container */
         }
 
         .carousel-images img {
-            width: auto; /* Maintains image aspect ratio */
-            height: 100%; /* Ensures images fit the carousel height */
-            margin: auto;
-            object-fit: contain; /* Avoids distortion */
+            width: 100%; /* Ensure each image takes up the entire container width */
+            height: 100%; /* Ensures proper aspect ratio and fits the container height */
+            object-fit: cover; /* Ensures the images are not distorted */
         }
 
         .prev, .next {
@@ -126,14 +125,10 @@
                 <img src="spartyinspace.jpg" alt="Sparty in Space">
                 <img src="spartyjacked.jpg" alt="Jacked Sparty">
                 <img src="spartytravolta.jpg" alt="Sparty as Travolta">
-                <img src="boxingsparty.jpg" alt="Boxing Sparty">
-                <img src="flyspartycasino.jpg" alt="Flying Sparty Casino">
-                <img src="ghandisparty.png" alt="Ghandi Sparty">
-                <img src="goldmedalsparty.jpg" alt="Gold Medal Sparty">
-                <img src="hungrysparty.jpg" alt="Hungry Sparty">
-                <img src="spartygump.jpg" alt="Sparty Gump">
-                <img src="spartypatriot.jpg" alt="Sparty Patriot">
-                <img src="spartytitanic.jpg" alt="Sparty Titanic">
+                <img src="spartypatriot.jpg" alt="Patriotic Sparty">
+                <img src="spartygump.jpg" alt="Sparty as Forrest Gump">
+                <img src="spartycasino.jpg" alt="Casino Sparty">
+                <img src="spartytitanic.jpg" alt="Titanic Sparty">
             </div>
             <button class="prev">❮</button>
             <button class="next">❯</button>
@@ -142,6 +137,28 @@
     </div>
 
     <!-- Carousel JavaScript -->
-    <script src="carousel.js"></script>
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-images img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100; // Shift by 100% per image
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+    </script>
 </body>
 </html>
