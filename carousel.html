@@ -6,6 +6,7 @@
     <title>A Lifetime of Achievement</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Carousel Styles */
         .carousel-container {
             max-width: 800px;
             margin: 50px auto;
@@ -17,20 +18,20 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%; /* Ensures the carousel adapts to the container width */
-            height: 450px; /* Fixed height based on image dimensions */
+            width: 100%;
+            height: auto;
         }
 
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            height: 100%; /* Ensure container height matches images */
         }
 
         .carousel-images img {
-            width: auto; /* Maintain image aspect ratio */
-            height: 100%; /* Scale images to fit the height of the carousel */
-            margin: auto; /* Center the images inside the container */
+            width: 100%;
+            max-height: 450px; /* Maintain appropriate height */
+            object-fit: contain; /* Prevent image distortion */
+            margin: auto;
         }
 
         .prev, .next {
@@ -83,9 +84,40 @@
         a.back-link:hover {
             text-decoration: underline;
         }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background-color: #6a0dad;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <!-- Global Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="carousel.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Carousel Section -->
     <div class="carousel-container">
         <h1>A Lifetime of Achievement</h1>
         <div class="carousel">
@@ -100,6 +132,9 @@
         <p class="carousel-caption">Sparty's Greatest Moments</p>
         <a href="index.html" class="back-link">Back to Home</a>
     </div>
+
+    <!-- Carousel JavaScript -->
     <script src="carousel.js"></script>
 </body>
 </html>
+
