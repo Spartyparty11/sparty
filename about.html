@@ -5,65 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Spartacus</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #6a0dad;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        #cat-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cat {
+            position: absolute;
+            width: 150px;
+            animation: jump 3s infinite ease-in-out, wiggle 1s infinite ease-in-out;
+        }
+
+        @keyframes jump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-150px);
+            }
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(5deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #5a0095;
+        }
+
+        form {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #6a0dad;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>About Spartacus</h1>
-    <p>Not much Spartacus here. Sorry.</p>
+    <div class="content-section">
+        <h1>About Spartacus</h1>
+        <p>Spartacus is a legend, a hero, and a source of endless joy. Learn more about this majestic feline!</p>
 
-    <!-- Image of Spartacus -->
-    <img src="spartacus_sad.jpg" alt="Spartacus looking sad but majestic" width="300">
-    
-    <h2>Watch Spartacus Dance!</h2>
-    <button id="dance-button">Click Me!</button>
-    
-    <!-- Container for the jumping Spartacus -->
-    <div id="cat-container"></div>
-    
-    <!-- Link to go back to the homepage -->
-    <p><a href="index.html">Back to Home</a></p>
-    
-    <h2>See more Spartacus</h2>
-    <form action="https://example.com/submit" method="POST">
-        <!-- Name Fields -->
-        <label for="first-name">First Name:</label><br>
-        <input type="text" id="first-name" name="first-name" placeholder="Your first name" required><br><br>
-        
-        <label for="last-name">Last Name:</label><br>
-        <input type="text" id="last-name" name="last-name" placeholder="Your last name" required><br><br>
-    
-        <!-- Email Field -->
-        <label for="email">Email Address:</label><br>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required><br><br>
-    
-        <!-- Multiple Choice Options -->
-        <p>What would you like to see?</p>
-        <input type="radio" id="see-more" name="preference" value="see-more-spartacus" required>
-        <label for="see-more">See more Spartacus?</label><br>
-        
-        <input type="radio" id="also-see-more" name="preference" value="also-see-more-spartacus" required>
-        <label for="also-see-more">Also see more Spartacus</label><br><br>
-    
-        <!-- Submit Button -->
-        <button type="submit">Subscribe</button>
-    </form>
-    
+        <!-- Image of Spartacus -->
+        <img src="spartacus_sad.jpg" alt="Spartacus looking sad but majestic">
+
+        <h2>Watch Spartacus Dance!</h2>
+        <button id="dance-button">Click Me!</button>
+
+        <!-- Container for the jumping Spartacus -->
+        <div id="cat-container"></div>
+    </div>
+
+    <div class="content-section">
+        <h2>See More Spartacus</h2>
+        <form action="https://example.com/submit" method="POST">
+            <!-- Name Fields -->
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Your first name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Your last name" required>
+
+            <!-- Email Field -->
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+            <!-- Multiple Choice Options -->
+            <p>What would you like to see?</p>
+            <input type="radio" id="see-more" name="preference" value="see-more-spartacus" required>
+            <label for="see-more">See more Spartacus?</label><br>
+
+            <input type="radio" id="also-see-more" name="preference" value="also-see-more-spartacus" required>
+            <label for="also-see-more">Also see more Spartacus</label><br>
+
+            <!-- Submit Button -->
+            <button type="submit">Subscribe</button>
+        </form>
+        <a href="index.html">Back to Home</a>
+    </div>
+
     <!-- JavaScript placed at the bottom -->
     <script>
         document.getElementById("dance-button").addEventListener("click", function () {
             const container = document.getElementById("cat-container");
-            
+
             // Add 10 dancing Spartacus images
             for (let i = 0; i < 10; i++) {
                 const spartacus = document.createElement("img");
                 spartacus.src = "spartydog.png"; /* Use local Spartacus image */
-                spartacus.classList.add("cat"); /* Add styling for dancing cats */
-                
+                spartacus.classList.add("cat");
+
                 // Randomize position
-                spartacus.style.position = "absolute";
                 spartacus.style.left = Math.random() * (window.innerWidth - 150) + "px";
                 spartacus.style.bottom = "0"; /* Start at the bottom of the screen */
                 spartacus.style.animationDelay = Math.random() * 2 + "s"; /* Stagger animations */
-                
+
                 container.appendChild(spartacus);
             }
         });
