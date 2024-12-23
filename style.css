@@ -1,115 +1,106 @@
-/* General styles */
+/* Root Variables for Consistency */
+:root {
+    --primary-color: #6a0dad; /* Deep purple */
+    --secondary-color: #f8f8ff; /* Light white-gray */
+    --accent-color: #d4bfff; /* Soft lavender */
+    --text-color: #333;
+    --button-color: #9b5de5; /* Purple accent */
+    --button-hover: #6f42c1;
+}
+
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    color: #333;
     margin: 0;
-    padding: 0;
-}
-
-h1 {
-    color: #0078D4;
-    margin-top: 20px;
-}
-
-/* Form styles */
-form {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     text-align: center;
-    margin-top: 20px;
 }
 
-input[type="text"],
-input[type="email"] {
-    padding: 10px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-label {
-    font-size: 16px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-p {
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-/* Button styles */
-button {
-    padding: 10px 20px;
-    background-color: #0078d4;
+/* Headers */
+h1 {
     color: white;
-    border: none;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--primary-color);
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Content Section */
+.content-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.carousel img {
+    max-height: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.button, .cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--button-color);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #005bb5;
-}
-
-#dance-button {
+    transition: background-color 0.3s ease;
     margin-top: 20px;
-    background-color: #ff9800;
 }
 
-#dance-button:hover {
-    background-color: #e68a00;
+.button:hover, .cta-button:hover {
+    background-color: var(--button-hover);
 }
 
-/* Dancing Spartacus (Sparty) styles */
-#cat-container {
-    position: relative;
-    width: 100%;
-    height: 300px; /* Increased height for better animation visibility */
-    overflow: hidden;
-    margin-top: 20px;
-    background-color: #e0e0e0;
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
 }
 
-.cat {
-    position: absolute;
-    bottom: 0; /* Start at bottom of container */
-    width: 220px; /* Larger size for visibility */
-    animation: jump 3s infinite ease-in-out, wiggle 1s infinite ease-in-out;
-}
-
-/* Keyframes for jumping */
-@keyframes jump {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-150px); /* Jump height */
-    }
-}
-
-/* Keyframes for wiggling */
-@keyframes wiggle {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(5deg);
-    }
-    75% {
-        transform: rotate(-5deg);
-    }
-}
-
-/* Animation for Sparty-Dance (Static Image) */
+/* Dancing Spartacus */
 .dancing-sparty {
     display: block;
     margin: 20px auto;
@@ -134,78 +125,23 @@ button:hover {
         transform: translateY(0) rotate(0deg);
     }
 }
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    color: #333;
-}
 
-h1 {
-    color: #0078D4;
-}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
 
-/* Carousel styles */
-.carousel {
-    position: relative;
-    max-width: 600px;
-    margin: 20px auto;
-    overflow: hidden;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-}
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
+    .content-section {
+        padding: 20px;
+    }
 
-.carousel-images img {
-    width: 100%;
-    flex-shrink: 0;
+    .carousel img {
+        max-height: 200px;
+    }
 }
-
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-/* CTA Button */
-.cta-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #0078D4;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-}
-
-.cta-button:hover {
-    background-color: #005BB5;
-}
-
