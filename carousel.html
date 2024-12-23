@@ -18,20 +18,19 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%; /* Ensures the carousel adapts to the container width */
-            height: 500px; /* Fixed height based on large image dimensions */
+            width: 100%;
+            height: 450px; /* Set height for images */
         }
 
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            width: 100%; /* Ensure images fit perfectly within the container */
         }
 
         .carousel-images img {
-            width: 100%; /* Ensure each image takes up the entire container width */
-            height: 100%; /* Ensures proper aspect ratio and fits the container height */
-            object-fit: cover; /* Ensures the images are not distorted */
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
         }
 
         .prev, .next {
@@ -58,31 +57,6 @@
 
         .next {
             right: 10px;
-        }
-
-        .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px 15px;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 16px;
-            border-radius: 8px;
-        }
-
-        a.back-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 18px;
-            color: #6a0dad;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a.back-link:hover {
-            text-decoration: underline;
         }
 
         h1 {
@@ -125,10 +99,10 @@
                 <img src="spartyinspace.jpg" alt="Sparty in Space">
                 <img src="spartyjacked.jpg" alt="Jacked Sparty">
                 <img src="spartytravolta.jpg" alt="Sparty as Travolta">
-                <img src="spartypatriot.jpg" alt="Patriotic Sparty">
-                <img src="spartygump.jpg" alt="Sparty as Forrest Gump">
-                <img src="spartycasino.jpg" alt="Casino Sparty">
-                <img src="spartytitanic.jpg" alt="Titanic Sparty">
+                <img src="flyspartycasino.jpg" alt="Sparty Casino">
+                <img src="goldmedalsparty.jpg" alt="Sparty Gold Medal">
+                <img src="spartypatriot.jpg" alt="Sparty Patriot">
+                <img src="spartytitanic.jpg" alt="Sparty Titanic">
             </div>
             <button class="prev">❮</button>
             <button class="next">❯</button>
@@ -139,24 +113,23 @@
     <!-- Carousel JavaScript -->
     <script>
         const carouselImages = document.querySelector('.carousel-images');
-        const images = document.querySelectorAll('.carousel-images img');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        const totalImages = document.querySelectorAll('.carousel-images img').length;
 
         let currentIndex = 0;
 
-        function updateCarousel() {
-            const offset = -currentIndex * 100; // Shift by 100% per image
-            carouselImages.style.transform = `translateX(${offset}%)`;
-        }
+        const updateCarousel = () => {
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        };
 
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+        prev.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
             updateCarousel();
         });
 
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+        next.addEventListener('click', () => {
+            currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
             updateCarousel();
         });
     </script>
