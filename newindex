@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purple Dawn Theme</title>
+    <title>Spartacus Website</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         :root {
             --primary-color: #6a0dad; /* Deep purple */
@@ -122,33 +123,26 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to Purple Dawn</h1>
+        <h1>Welcome to Spartacus</h1>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#shop">Shop</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="carousel.html">Gallery</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <div class="content-section">
-        <h2>Featured Products</h2>
-        <p>Check out our latest and greatest products that bring style and functionality to your life.</p>
-        <div class="carousel">
-            <img src="https://via.placeholder.com/400x300" alt="Product 1">
-            <img src="https://via.placeholder.com/400x300" alt="Product 2">
-            <img src="https://via.placeholder.com/400x300" alt="Product 3">
-        </div>
-        <a href="#shop" class="button">Shop Now</a>
-    </div>
-
-    <div class="content-section">
-        <h2>About Us</h2>
-        <p>At Purple Dawn, we believe in creating a unique shopping experience with vibrant designs and user-friendly functionality.</p>
+        <h2>Discover Spartacus</h2>
+        <p>This is where you see Spartacus, the legendary cat.</p>
+        <img src="myimage.jpg" alt="A description of my image" width="300">
+        <img src="spartacus_sad.jpg" alt="Dancing Sparty" class="dancing-sparty">
+        <h2>See the Meatball</h2>
+        <a href="carousel.html" class="button">Explore Now</a>
     </div>
 
     <footer>
-        <p>&copy; 2024 Purple Dawn. All Rights Reserved.</p>
+        <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
