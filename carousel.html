@@ -3,21 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Carousel</title>
+    <title>A Lifetime of Achievement</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .carousel-container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #6a0dad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>A Lifetime of Achievement</h1>
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="spartyinspace.jpg" alt="Sparty in Space">
-            <img src="spartyjacked.jpg" alt="Jacked Sparty">
-            <img src="spartytravolta.jpg" alt="Sparty as Travolta">
+    <div class="carousel-container">
+        <h1>A Lifetime of Achievement</h1>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="spartyinspace.jpg" alt="Sparty in Space">
+                <img src="spartyjacked.jpg" alt="Jacked Sparty">
+                <img src="spartytravolta.jpg" alt="Sparty as Travolta">
+            </div>
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
         </div>
-        <button class="prev">❮</button>
-        <button class="next">❯</button>
+        <p class="carousel-caption">Sparty's Greatest Moments</p>
+        <a href="index.html" class="back-link">Back to Home</a>
     </div>
-    <p><a href="index.html">Back to Home</a></p>
     <script src="carousel.js"></script>
 </body>
 </html>
