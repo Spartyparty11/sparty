@@ -17,16 +17,20 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Ensures the carousel adapts to the container width */
+            height: 450px; /* Fixed height based on image dimensions */
         }
 
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            height: 100%; /* Ensure container height matches images */
         }
 
         .carousel-images img {
-            width: 100%;
-            flex-shrink: 0;
+            width: auto; /* Maintain image aspect ratio */
+            height: 100%; /* Scale images to fit the height of the carousel */
+            margin: auto; /* Center the images inside the container */
         }
 
         .prev, .next {
@@ -99,4 +103,3 @@
     <script src="carousel.js"></script>
 </body>
 </html>
-
