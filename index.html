@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <style>
         :root {
-            --primary-color: #6a0dad; /* Deep purple */
-            --secondary-color: #f8f8ff; /* Light white-gray */
-            --accent-color: #d4bfff; /* Soft lavender */
+            --primary-color: #6a0dad;
+            --secondary-color: #f8f8ff;
+            --accent-color: #d4bfff;
             --text-color: #333;
-            --button-color: #9b5de5; /* Purple accent */
+            --button-color: #9b5de5;
             --button-hover: #6f42c1;
         }
 
@@ -23,10 +23,10 @@
         }
 
         header {
+            text-align: center;
             background-color: var(--primary-color);
             color: white;
             padding: 20px 0;
-            text-align: center;
         }
 
         header h1 {
@@ -47,47 +47,41 @@
             font-weight: bold;
         }
 
-        .content-section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-section h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-
-        .content-section p {
-            line-height: 1.6;
-            margin-top: 20px;
-        }
-
-        .carousel {
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 60vh; /* Adjust hero height */
+            background-image: url('path-to-your-image.jpg'); /* Replace with your hero image file */
+            background-size: cover;
+            background-position: center;
             display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0;
-        }
-
-        .carousel img {
-            max-height: 300px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            background-color: var(--primary-color);
+            align-items: center;
+            justify-content: center;
             color: white;
             text-align: center;
-            padding: 20px 0;
         }
 
-        .button {
-            display: inline-block;
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Dim overlay for text readability */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin: 0 0 20px;
+        }
+
+        .hero-content .button {
             background-color: var(--button-color);
             color: white;
             padding: 10px 20px;
@@ -97,27 +91,30 @@
             transition: background-color 0.3s;
         }
 
-        .button:hover {
+        .hero-content .button:hover {
             background-color: var(--button-hover);
         }
 
         @media (max-width: 768px) {
-            header h1 {
+            .hero-content h1 {
                 font-size: 2rem;
             }
+        }
 
-            nav {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
+        .content-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-            .content-section {
-                padding: 20px;
-            }
-
-            .carousel img {
-                max-height: 200px;
-            }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
         }
     </style>
 </head>
@@ -132,13 +129,17 @@
         </nav>
     </header>
 
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Meet Spartacus</h1>
+            <a href="about.html" class="button">Learn More</a>
+        </div>
+    </section>
+
     <div class="content-section">
         <h2>Discover Spartacus</h2>
         <p>This is where you see Spartacus, the legendary cat.</p>
-        <img src="myimage.jpg" alt="A description of my image" width="300">
-        <img src="spartacus_sad.jpg" alt="Dancing Sparty" class="dancing-sparty">
-        <h2>See the Meatball</h2>
-        <a href="carousel.html" class="button">Explore Now</a>
     </div>
 
     <footer>
