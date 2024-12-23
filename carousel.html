@@ -8,7 +8,7 @@
     <style>
         /* Carousel Styles */
         .carousel-container {
-            max-width: 900px;
+            max-width: 1000px; /* Adjusted to accommodate larger images */
             margin: 50px auto;
             text-align: center;
         }
@@ -18,22 +18,21 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            height: 550px; /* Increased height for larger images */
-            background-color: #f8f8ff; /* Matches background for a seamless look */
+            width: 100%; /* Ensures carousel width matches the container */
+            height: 600px; /* Adjusted to fit larger images */
         }
 
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            width: 100%;
+            height: 100%; /* Ensures container height matches images */
         }
 
         .carousel-images img {
-            flex-shrink: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures images fill the container without stretching */
+            width: auto; /* Maintains image aspect ratio */
+            height: 100%; /* Ensures images fit the carousel height */
+            margin: auto;
+            object-fit: contain; /* Avoids distortion */
         }
 
         .prev, .next {
@@ -127,7 +126,8 @@
                 <img src="spartyinspace.jpg" alt="Sparty in Space">
                 <img src="spartyjacked.jpg" alt="Jacked Sparty">
                 <img src="spartytravolta.jpg" alt="Sparty as Travolta">
-                <img src="flyspartycasino.jpg" alt="Fly Sparty Casino">
+                <img src="boxingsparty.jpg" alt="Boxing Sparty">
+                <img src="flyspartycasino.jpg" alt="Flying Sparty Casino">
                 <img src="ghandisparty.png" alt="Ghandi Sparty">
                 <img src="goldmedalsparty.jpg" alt="Gold Medal Sparty">
                 <img src="hungrysparty.jpg" alt="Hungry Sparty">
@@ -142,32 +142,6 @@
     </div>
 
     <!-- Carousel JavaScript -->
-    <script>
-        const carouselImages = document.querySelector('.carousel-images');
-        const images = document.querySelectorAll('.carousel-images img');
-        const prev = document.querySelector('.prev');
-        const next = document.querySelector('.next');
-        let index = 0;
-
-        const updateCarousel = () => {
-            const width = document.querySelector('.carousel').clientWidth;
-            carouselImages.style.transform = `translateX(-${index * width}px)`;
-        };
-
-        prev.addEventListener('click', () => {
-            index = (index > 0) ? index - 1 : images.length - 1;
-            updateCarousel();
-        });
-
-        next.addEventListener('click', () => {
-            index = (index < images.length - 1) ? index + 1 : 0;
-            updateCarousel();
-        });
-
-        window.addEventListener('resize', updateCarousel);
-
-        // Initialize carousel size on load
-        window.onload = updateCarousel;
-    </script>
+    <script src="carousel.js"></script>
 </body>
 </html>
