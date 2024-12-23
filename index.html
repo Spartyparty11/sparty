@@ -13,6 +13,8 @@
             --text-color: #333;
             --button-color: #9b5de5;
             --button-hover: #6f42c1;
+            --cta-color: #ff5733; /* Bright red for CTA */
+            --cta-hover: #c70039; /* Darker red for hover effect */
         }
 
         body {
@@ -47,11 +49,22 @@
             font-weight: bold;
         }
 
+        nav a.cta {
+            background-color: var(--cta-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a.cta:hover {
+            background-color: var(--cta-hover);
+        }
+
         .hero {
             position: relative;
             width: 100%;
-            height: 60vh; /* Hero height */
-            background-image: url('flyingsparty.jpg'); /* Hero image */
+            height: 60vh;
+            background-image: url('flyingsparty.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -65,7 +78,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .hero-content {
@@ -93,51 +106,6 @@
         .hero-content .button:hover {
             background-color: var(--button-hover);
         }
-
-        .content-section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-section h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-
-        .content-section p {
-            line-height: 1.6;
-            margin-top: 20px;
-        }
-
-        .carousel {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0;
-        }
-
-        .carousel img {
-            max-height: 300px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -148,6 +116,7 @@
             <a href="about.html">About</a>
             <a href="carousel.html">Gallery</a>
             <a href="contact.html">Contact</a>
+            <a href="buynow.html" class="cta">BUY NOW</a>
         </nav>
     </header>
 
@@ -158,15 +127,6 @@
             <a href="about.html" class="button">Learn More</a>
         </div>
     </section>
-
-    <div class="content-section">
-        <h2>Discover Spartacus</h2>
-        <p>This is where you see Spartacus, the legendary cat.</p>
-        <img src="myimage.jpg" alt="A description of my image" width="300">
-        <img src="spartacus_sad.jpg" alt="Dancing Sparty" class="dancing-sparty">
-        <h2>See the Meatball</h2>
-        <a href="carousel.html" class="button">Explore Now</a>
-    </div>
 
     <footer>
         <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
