@@ -126,17 +126,18 @@
             margin-top: 20px;
         }
 
-        .carousel {
+        .image-row {
             display: flex;
-            overflow-x: auto;
             gap: 20px;
-            padding: 20px 0;
+            justify-content: center;
+            margin-top: 20px;
         }
 
-        .carousel img {
-            max-height: 300px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .image-row img {
+            max-width: 45%; /* Ensure images are side by side and scale well */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         footer {
@@ -149,6 +150,15 @@
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2rem;
+            }
+
+            .image-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-row img {
+                max-width: 80%;
             }
         }
     </style>
@@ -176,8 +186,10 @@
     <div class="content-section">
         <h2>Discover Spartacus</h2>
         <p>This is where you see Spartacus, the legendary cat.</p>
-        <img src="myimage.jpg" alt="A description of my image" width="300">
-        <img src="spartacus_sad.jpg" alt="Dancing Sparty" class="dancing-sparty">
+        <div class="image-row">
+            <img src="myimage.jpg" alt="A description of my image">
+            <img src="spartacus_sad.jpg" alt="Dancing Sparty">
+        </div>
         <h2>See the Meatball</h2>
         <a href="carousel.html" class="button">Explore Now</a>
     </div>
