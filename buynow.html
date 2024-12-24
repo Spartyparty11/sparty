@@ -94,89 +94,37 @@
             }
         }
 
-        .not-sure-section {
-            margin: 50px 20px;
-            padding: 30px;
-            background: repeating-linear-gradient(45deg, var(--primary-color), var(--primary-color) 10px, var(--secondary-color) 10px, var(--secondary-color) 20px);
-            border: 5px solid var(--accent-color);
-            animation: spinBackground 5s linear infinite;
-            text-shadow: 0 0 10px white, 0 0 20px var(--primary-color);
-        }
-
-        @keyframes spinBackground {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .not-sure-cta {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            text-shadow: 0 0 10px #fff, 0 0 20px #ff0000;
-            animation: bounce 1s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .form-section {
-            margin: 50px 20px;
-            padding: 30px;
-            background-color: var(--secondary-color);
-            border: 10px solid var(--primary-color);
-            border-radius: 12px;
-            text-shadow: 0 0 5px #000, 0 0 10px var(--primary-color);
-        }
-
-        form label {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        form input, form textarea {
+        .thank-you-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 80%;
-            margin: 10px 0;
-            padding: 15px;
-            font-size: 1.2rem;
-            border: 3px solid var(--primary-color);
-            border-radius: 8px;
-        }
-
-        form button {
-            background: var(--primary-color);
-            color: var(--secondary-color);
+            max-width: 400px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px var(--accent-color);
+            text-align: center;
             font-size: 1.5rem;
-            padding: 15px 30px;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            animation: glowButton 1.5s infinite;
+            z-index: 1000;
         }
 
-        @keyframes glowButton {
-            0% {
-                box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--primary-color);
-            }
-            100% {
-                box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
-            }
+        .thank-you-popup.active {
+            display: block;
+        }
+
+        .thank-you-popup button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         footer {
@@ -194,34 +142,26 @@
 
     <div class="buy-section">
         <p>Ready to make Spartacus your life?</p>
-        <a href="#form-section" class="buy-now-button">BUY NOW!</a>
+        <button class="buy-now-button" onclick="showThankYou()">BUY NOW!</button>
     </div>
 
-    <div class="not-sure-section">
-        <h2>NOT SURE?</h2>
-        <p>Still on the fence? Check out Spartacus' greatest moments!</p>
-        <a href="carousel.html" class="not-sure-cta">VIEW THE GALLERY</a>
-    </div>
-
-    <div class="form-section" id="form-section">
-        <h2>GET IN TOUCH!</h2>
-        <form action="submit.php" method="POST">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Your Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
+    <div class="thank-you-popup" id="thankYouPopup">
+        <p>🎉 Thank you for your purchase! Spartacus is proud! 🎉</p>
+        <button onclick="closeThankYou()">Close</button>
     </div>
 
     <footer>
         <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function showThankYou() {
+            document.getElementById('thankYouPopup').classList.add('active');
+        }
+
+        function closeThankYou() {
+            document.getElementById('thankYouPopup').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
-
