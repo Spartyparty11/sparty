@@ -139,6 +139,30 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        .cta-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .cta-section a {
+            display: block;
+            background-color: var(--button-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-section a:hover {
+            background-color: var(--button-hover);
+        }
+
         footer {
             background-color: var(--primary-color);
             color: white;
@@ -167,7 +191,6 @@
             <a href="carousel.html">Gallery</a>
             <a href="contact.html">Contact</a>
             <a href="buynow.html" class="cta">BUY NOW</a>
-            <a href="sparty_memory.html" class="cta">Play the Memory Game</a>
         </nav>
     </header>
 
@@ -188,6 +211,13 @@
         </div>
         <h2>See the Meatball</h2>
         <a href="carousel.html" class="button">Explore Now</a>
+    </div>
+
+    <div class="cta-section">
+        <a href="sparty_memory.html">Play the Memory Game</a>
+        <a href="sparty_gameshow.html">Sparty Game Show</a>
+        <a href="sparty_challenge.html">Sparty Challenge Arena</a>
+        <a href="sparty_showcase.html">Sparty Showcase</a>
     </div>
 
     <footer>
