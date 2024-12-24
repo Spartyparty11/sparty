@@ -126,6 +126,19 @@
             margin-top: 20px;
         }
 
+        .image-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         footer {
             background-color: var(--primary-color);
             color: white;
@@ -136,6 +149,11 @@
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2rem;
+            }
+
+            .image-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -149,6 +167,7 @@
             <a href="carousel.html">Gallery</a>
             <a href="contact.html">Contact</a>
             <a href="buynow.html" class="cta">BUY NOW</a>
+            <a href="sparty_memory.html" class="cta">Play the Memory Game</a>
         </nav>
     </header>
 
@@ -163,8 +182,10 @@
     <div class="content-section">
         <h2>Discover Spartacus</h2>
         <p>This is where you see Spartacus, the legendary cat.</p>
-        <img src="myimage.jpg" alt="A description of my image" width="300">
-        <img src="spartacus_sad.jpg" alt="Dancing Sparty" class="dancing-sparty">
+        <div class="image-container">
+            <img src="myimage.jpg" alt="A description of my image">
+            <img src="spartacus_sad.jpg" alt="Dancing Sparty">
+        </div>
         <h2>See the Meatball</h2>
         <a href="carousel.html" class="button">Explore Now</a>
     </div>
