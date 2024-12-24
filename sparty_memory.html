@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sparty Memory Game</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         :root {
             --primary-color: #ff0000;
@@ -15,246 +14,140 @@
 
         body {
             font-family: 'Comic Sans MS', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle, #000, #222);
+            background-color: black;
             color: var(--text-color);
             text-align: center;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--primary-color));
-            padding: 20px;
-            text-transform: uppercase;
-            animation: headerFlash 1.5s infinite;
-            color: var(--text-color);
-            text-shadow: 0 0 10px #fff, 0 0 20px #ff0000, 0 0 30px #ffe100;
-        }
-
-        @keyframes headerFlash {
-            0% {
-                background: var(--primary-color);
-            }
-            50% {
-                background: var(--secondary-color);
-            }
-            100% {
-                background: var(--primary-color);
-            }
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--accent-color);
         }
 
         .game-container {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 800px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            background: var(--secondary-color);
-            border: 5px dashed var(--primary-color);
-            border-radius: 12px;
-            animation: borderFlash 1s infinite alternate;
-        }
-
-        @keyframes borderFlash {
-            0% {
-                border-color: var(--primary-color);
-            }
-            100% {
-                border-color: var(--accent-color);
-            }
+            max-width: 600px;
+            margin: 20px auto;
         }
 
         .card {
-            background: var(--primary-color);
-            border: 2px solid var(--accent-color);
-            border-radius: 10px;
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: var(--primary-color);
+            border: 3px dashed var(--secondary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            height: 100px;
-            position: relative;
-            perspective: 1000px;
-        }
-
-        .card .card-inner {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transform: rotateY(0);
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-        }
-
-        .card.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card .card-front,
-        .card .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
-        }
-
-        .card .card-front {
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 1.5rem;
+            font-weight: bold;
             color: var(--text-color);
-            border: 2px dashed var(--secondary-color);
+            position: relative;
         }
 
-        .card .card-back {
-            background-size: cover;
-            transform: rotateY(180deg);
-        }
-
-        footer {
-            background: var(--primary-color);
-            padding: 20px;
-            color: var(--text-color);
-        }
-
-        .celebration {
+        .card img {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 3rem;
-            z-index: 1000;
-            animation: flashText 1s infinite alternate;
+            border-radius: 12px;
         }
 
-        @keyframes flashText {
-            0% {
-                color: var(--primary-color);
-            }
-            100% {
-                color: var(--accent-color);
-            }
+        .card.flipped img {
+            display: block;
+        }
+
+        .card.flipped {
+            background-color: var(--secondary-color);
+        }
+
+        .win-message {
+            display: none;
+            font-size: 2rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+            margin-top: 20px;
+        }
+
+        .win-message.visible {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Sparty Memory Game Extravaganza!</h1>
-    </header>
-
-    <div class="game-container" id="game-container">
-        <!-- Cards will be dynamically inserted here -->
+    <h1>Sparty Memory Game Extravaganza!</h1>
+    <div class="game-container" id="gameContainer">
+        <!-- Cards will be dynamically generated here -->
     </div>
-
-    <div class="celebration" id="celebration">
-        🎉 YOU WON! SPARTACUS IS PROUD! 🎉
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
-        <a href="index.html" class="cta">Return to Home</a>
-    </footer>
+    <div class="win-message" id="winMessage">🎉 YOU WON! SPARTACUS IS PROUD! 🎉</div>
 
     <script>
         const images = [
-            'spartydog.jpg',
-            'spartybench.jpg',
-            'spartypyramid.jpg',
-            'spartyinspace.jpg',
-            'spartygump.jpg',
-            'spartyrocky.jpg',
-            'spartytravolta.jpg',
-            'spartytitanic.jpg'
+            'spartyET.jpg', 'spartybday.jpg', 'spartybench.jpg',
+            'spartydog.png', 'spartygump.jpg', 'spartyhotdog.jpg',
+            'spartyinspacem.jpg', 'spartyrocky.jpg'
         ];
 
-        const gameContainer = document.getElementById('game-container');
-        const celebration = document.getElementById('celebration');
-        let firstCard, secondCard;
-        let lockBoard = false;
-        let matches = 0;
+        let gameContainer = document.getElementById('gameContainer');
+        let winMessage = document.getElementById('winMessage');
 
-        function createCard(image) {
-            const card = document.createElement('div');
+        let cardArray = [...images, ...images]; // Duplicate images for pairs
+        cardArray.sort(() => 0.5 - Math.random()); // Shuffle cards
+
+        let flippedCards = [];
+        let matchedCards = 0;
+
+        function createCard(imageSrc) {
+            let card = document.createElement('div');
             card.classList.add('card');
-            card.innerHTML = `
-                <div class="card-inner">
-                    <div class="card-front">?</div>
-                    <div class="card-back" style="background-image: url(${image});"></div>
-                </div>
-            `;
-            card.addEventListener('click', flipCard);
+            card.innerHTML = `<img src="${imageSrc}" alt="Sparty Image">`;
+
+            card.addEventListener('click', () => {
+                if (card.classList.contains('flipped') || flippedCards.length === 2) {
+                    return;
+                }
+
+                card.classList.add('flipped');
+                flippedCards.push(card);
+
+                if (flippedCards.length === 2) {
+                    checkMatch();
+                }
+            });
+
+            return card;
+        }
+
+        function checkMatch() {
+            let [card1, card2] = flippedCards;
+            let img1 = card1.querySelector('img').src;
+            let img2 = card2.querySelector('img').src;
+
+            if (img1 === img2) {
+                matchedCards += 2;
+                flippedCards = [];
+
+                if (matchedCards === cardArray.length) {
+                    winMessage.classList.add('visible');
+                }
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+
+        cardArray.forEach(imageSrc => {
+            let card = createCard(imageSrc);
             gameContainer.appendChild(card);
-        }
-
-        function flipCard() {
-            if (lockBoard) return;
-            if (this === firstCard) return;
-
-            this.classList.add('flipped');
-
-            if (!firstCard) {
-                firstCard = this;
-                return;
-            }
-
-            secondCard = this;
-            checkForMatch();
-        }
-
-        function checkForMatch() {
-            const isMatch =
-                firstCard.querySelector('.card-back').style.backgroundImage ===
-                secondCard.querySelector('.card-back').style.backgroundImage;
-
-            isMatch ? disableCards() : unflipCards();
-        }
-
-        function disableCards() {
-            firstCard.removeEventListener('click', flipCard);
-            secondCard.removeEventListener('click', flipCard);
-            resetBoard();
-            matches++;
-
-            if (matches === images.length) {
-                celebration.style.display = 'flex';
-            }
-        }
-
-        function unflipCards() {
-            lockBoard = true;
-
-            setTimeout(() => {
-                firstCard.classList.remove('flipped');
-                secondCard.classList.remove('flipped');
-                resetBoard();
-            }, 1000);
-        }
-
-        function resetBoard() {
-            [firstCard, secondCard, lockBoard] = [null, null, false];
-        }
-
-        function initGame() {
-            const doubledImages = [...images, ...images];
-            doubledImages.sort(() => Math.random() - 0.5);
-            doubledImages.forEach((image) => createCard(image));
-        }
-
-        initGame();
+        });
     </script>
 </body>
 </html>
