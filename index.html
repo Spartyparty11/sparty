@@ -155,16 +155,17 @@
 
         .carousel-track {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             transition: transform 0.5s ease-in-out;
         }
 
         .carousel-item {
             flex: 0 0 auto;
-            width: 150px;
+            width: 250px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
         .carousel-item img {
@@ -212,6 +213,7 @@
             <a href="sparty_gameshow.html">Game Show</a>
             <a href="sparty_challenge.html">Challenge</a>
             <a href="sparty_showcase.html">Showcase</a>
+            <a href="buynow.html" class="cta">BUY NOW</a>
         </nav>
     </header>
 
@@ -232,9 +234,7 @@
 
     <div class="carousel-container">
         <button class="carousel-button" id="prevBtn">&lt;</button>
-        <div class="carousel-track" id="carouselTrack">
-            <!-- Images dynamically added via JavaScript -->
-        </div>
+        <div class="carousel-track" id="carouselTrack"></div>
         <button class="carousel-button" id="nextBtn">&gt;</button>
     </div>
 
@@ -264,11 +264,15 @@
             imgDiv.classList.add('carousel-item');
             imgDiv.innerHTML = `<img src="${image}" alt="Sparty Image">`;
             carouselTrack.appendChild(imgDiv);
+
+            imgDiv.addEventListener('click', () => {
+                alert(`You clicked on ${image.split('.')[0]}`);
+            });
         });
 
         function updateCarousel() {
             const itemWidth = document.querySelector('.carousel-item').offsetWidth;
-            carouselTrack.style.transform = `translateX(-${currentIndex * (itemWidth + 10)}px)`;
+            carouselTrack.style.transform = `translateX(-${currentIndex * (itemWidth + 15)}px)`;
         }
 
         prevBtn.addEventListener('click', () => {
