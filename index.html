@@ -107,61 +107,51 @@
             background-color: var(--button-hover);
         }
 
-        .cta-section {
+        .carousel-container {
+            margin: 40px auto;
+            width: 90%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 20px auto;
-            padding: 20px;
+            transition: transform 0.5s ease-in-out;
         }
 
-        .cta-section a {
-            display: block;
-            background-color: var(--button-color);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .cta-section a:hover {
-            background-color: var(--button-hover);
-        }
-
-        .content-section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-section h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-
-        .content-section p {
-            line-height: 1.6;
-            margin-top: 20px;
-        }
-
-        .image-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .image-container img {
-            max-width: 300px;
+        .carousel-item {
+            min-width: 150px;
+            margin: 5px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .carousel-button:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
 
         footer {
@@ -169,21 +159,6 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .image-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-section {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
@@ -207,26 +182,56 @@
         </div>
     </section>
 
-    <div class="cta-section">
-        <a href="sparty_memory.html">Play the Memory Game</a>
-        <a href="sparty_gameshow.html">Sparty Game Show</a>
-        <a href="sparty_challenge.html">Sparty Challenge Arena</a>
-        <a href="sparty_showcase.html">Sparty Showcase</a>
-    </div>
-
-    <div class="content-section">
-        <h2>Discover Spartacus</h2>
-        <p>This is where you see Spartacus, the legendary cat.</p>
-        <div class="image-container">
-            <img src="myimage.jpg" alt="A description of my image">
-            <img src="spartacus_sad.jpg" alt="Dancing Sparty">
+    <div class="carousel-container">
+        <button class="carousel-button" id="prevBtn">&lt;</button>
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Images dynamically added by JavaScript -->
         </div>
-        <h2>See the Meatball</h2>
-        <a href="carousel.html" class="button">Explore Now</a>
+        <button class="carousel-button" id="nextBtn">&gt;</button>
     </div>
 
     <footer>
         <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        const images = [
+            'boxingsparty.jpg', 'flyingsparty.jpg', 'flyspartycasino.jpg', 'ghandisparty.png',
+            'goldmedalsparty.jpg', 'hippysparty.jpg', 'hungrysparty.jpg', 'myimage.jpg',
+            'spartacus_sad.jpg', 'spartyET.jpg', 'spartybday.jpg', 'spartybench.jpg',
+            'spartydog.png', 'spartygump.jpg', 'spartygump2.jpg', 'spartyhotdog.jpg',
+            'spartyinspace.jpg', 'spartyjacked.jpg', 'spartypatriot.jpg', 'spartypyramid.jpg',
+            'spartyrocky.jpg', 'spartyspacesalami.jpg', 'spartytitanic.jpg', 'spartytravolta.jpg',
+            'tomsparty.jpg'
+        ];
+
+        const carouselTrack = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        // Populate carousel
+        images.forEach(image => {
+            const imgElement = document.createElement('div');
+            imgElement.classList.add('carousel-item');
+            imgElement.innerHTML = `<img src="${image}" alt="Sparty Image">`;
+            carouselTrack.appendChild(imgElement);
+        });
+
+        function updateCarousel() {
+            const itemWidth = document.querySelector('.carousel-item').offsetWidth;
+            carouselTrack.style.transform = `translateX(-${currentIndex * (itemWidth + 10)}px)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) currentIndex--;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < images.length - 4) currentIndex++;
+            updateCarousel();
+        });
+    </script>
 </body>
 </html>
