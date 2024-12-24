@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <style>
         :root {
-            --primary-color: #ff0000; /* Eye-searing red */
-            --secondary-color: #ffe100; /* Blinding yellow */
-            --accent-color: #00ff00; /* Neon green */
+            --primary-color: #ff0000;
+            --secondary-color: #ffe100;
+            --accent-color: #00ff00;
             --text-color: white;
         }
 
@@ -44,6 +44,19 @@
             }
         }
 
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         h1 {
             font-size: 3rem;
         }
@@ -66,31 +79,88 @@
             margin: 40px 20px;
         }
 
-        .buy-now-button {
-            background: var(--primary-color);
-            color: var(--text-color);
-            padding: 10px 30px; /* Reduced padding for better spacing */
-            border: 5px dashed var(--secondary-color);
-            border-radius: 12px;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px white, 0 0 20px var(--secondary-color);
-            animation: pulseButton 1s infinite;
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin-top: 30px; /* Ensures proper spacing below text */
+        .not-sure-section {
+            margin: 50px 20px;
+            padding: 30px;
+            background: repeating-linear-gradient(45deg, var(--primary-color), var(--primary-color) 10px, var(--secondary-color) 10px, var(--secondary-color) 20px);
+            border: 5px solid var(--accent-color);
+            animation: spinBackground 5s linear infinite;
+            text-shadow: 0 0 10px white, 0 0 20px var(--primary-color);
         }
 
-        .buy-now-button:hover {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        @keyframes pulseButton {
+        @keyframes spinBackground {
             0% {
-                box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--primary-color);
+                transform: rotate(0deg);
             }
             100% {
-                box-shadow: 0 0 20px var(--secondary-color), 0 0 40px var(--primary-color), 0 0 50px var(--secondary-color);
+                transform: rotate(360deg);
+            }
+        }
+
+        .not-sure-cta {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff0000;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .form-section {
+            margin: 50px 20px;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border: 10px solid var(--primary-color);
+            border-radius: 12px;
+            text-shadow: 0 0 5px #000, 0 0 10px var(--primary-color);
+        }
+
+        form label {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        form input, form textarea {
+            width: 80%;
+            margin: 10px 0;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 3px solid var(--primary-color);
+            border-radius: 8px;
+        }
+
+        form button {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            animation: glowButton 1.5s infinite;
+        }
+
+        @keyframes glowButton {
+            0% {
+                box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--primary-color);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
             }
         }
 
@@ -137,16 +207,36 @@
 <body>
     <header>
         <h1>ACT NOW! BUY SPARTACUS!</h1>
-        <p class="limited-offer">LIMITED TIME OFFER OF A LIFETIME - DON'T MISS OUT!</p>
+        <p class="limited-offer">LIMITED TIME OFFER - DON'T MISS OUT!</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="carousel.html">Gallery</a>
+        </nav>
     </header>
 
     <div class="buy-section">
         <p>Ready to make Spartacus your life?</p>
-        <button class="buy-now-button" onclick="showThankYou()">BUY NOW!</button>
+    </div>
+
+    <div class="form-section" id="form-section">
+        <h2>GET IN TOUCH!</h2>
+        <form onsubmit="showThankYou(event)">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
     </div>
 
     <div class="thank-you-popup" id="thankYouPopup">
-        <p>🎉 Thank you for your purchase! Spartacus is proud! 🎉</p>
+        <p>🎉 Thank you for your submission! Spartacus is proud! 🎉</p>
         <button onclick="closeThankYou()">Close</button>
     </div>
 
@@ -155,7 +245,8 @@
     </footer>
 
     <script>
-        function showThankYou() {
+        function showThankYou(event) {
+            event.preventDefault();
             document.getElementById('thankYouPopup').classList.add('active');
         }
 
