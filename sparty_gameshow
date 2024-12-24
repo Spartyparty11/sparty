@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparty Game Show Bonanza!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #ff4500; /* Neon orange */
+            --secondary-color: #ffd700; /* Bright yellow */
+            --accent-color: #00ff00; /* Neon green */
+            --text-color: white;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #222);
+            color: var(--text-color);
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--primary-color));
+            padding: 20px;
+            text-transform: uppercase;
+            animation: headerFlash 1.5s infinite;
+            color: var(--text-color);
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff4500, 0 0 30px #ffd700;
+        }
+
+        @keyframes headerFlash {
+            0% {
+                background: var(--primary-color);
+            }
+            50% {
+                background: var(--secondary-color);
+            }
+            100% {
+                background: var(--primary-color);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        .section {
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: 5px dashed var(--accent-color);
+            border-radius: 12px;
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            animation: flashText 1.5s infinite alternate;
+        }
+
+        @keyframes flashText {
+            0% {
+                color: var(--primary-color);
+            }
+            100% {
+                color: var(--accent-color);
+            }
+        }
+
+        .wheel {
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            border: 10px solid var(--primary-color);
+            border-radius: 50%;
+            background: conic-gradient(var(--primary-color), var(--secondary-color), var(--accent-color), var(--primary-color));
+            animation: spin 5s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .wheel p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .quiz {
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .quiz h3 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .quiz button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            background: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quiz button:hover {
+            background: var(--accent-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            padding: 20px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SPARTY GAME SHOW BONANZA!</h1>
+    </header>
+
+    <section class="section">
+        <h2>Spin the Wheel of Sparty!</h2>
+        <div class="wheel" onclick="spinWheel()">
+            <p>SPIN ME!</p>
+        </div>
+        <p id="wheel-result"></p>
+    </section>
+
+    <section class="section quiz">
+        <h2>Test Your Sparty Knowledge!</h2>
+        <div>
+            <h3>What is Sparty's favorite activity?</h3>
+            <button onclick="showAnswer('correct')">Lifting weights</button>
+            <button onclick="showAnswer('wrong')">Knitting</button>
+            <button onclick="showAnswer('wrong')">Skydiving</button>
+            <button onclick="showAnswer('wrong')">Cooking</button>
+        </div>
+        <p id="quiz-feedback"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
+        <a href="index.html" class="cta">Return to Home</a>
+    </footer>
+
+    <script>
+        const wheelResult = document.getElementById("wheel-result");
+        const achievements = [
+            "Won the Golden Paw award!",
+            "Bench pressed 500 lbs of catnip!",
+            "Conquered the Moon in style!",
+            "Outran Usain Bolt!",
+            "Saved the world from dog overlords!",
+            "Ate 50 hotdogs in 5 minutes!"
+        ];
+
+        function spinWheel() {
+            const randomAchievement = achievements[Math.floor(Math.random() * achievements.length)];
+            wheelResult.textContent = `🎉 ${randomAchievement} 🎉`;
+        }
+
+        function showAnswer(answer) {
+            const feedback = document.getElementById("quiz-feedback");
+            if (answer === "correct") {
+                feedback.textContent = "🎉 Correct! Sparty is the strongest cat alive! 🎉";
+            } else {
+                feedback.textContent = "❌ Wrong! Try again. Sparty disapproves. ❌";
+            }
+        }
+    </script>
+</body>
+</html>
