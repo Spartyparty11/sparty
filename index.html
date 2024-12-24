@@ -27,20 +27,20 @@
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 5px 0;
+            padding: 10px 0;
             text-align: center;
         }
 
         header h1 {
-            margin: 5px 0;
-            font-size: 2rem;
+            margin: 0;
+            font-size: 2.5rem;
         }
 
         nav {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 5px;
+            margin: 10px 0;
         }
 
         nav a {
@@ -107,6 +107,45 @@
             background-color: var(--button-hover);
         }
 
+        .cta-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .cta-section a {
+            display: block;
+            background-color: var(--button-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-section a:hover {
+            background-color: var(--button-hover);
+        }
+
+        .content-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
         .carousel-container {
             margin: 40px auto;
             width: 90%;
@@ -116,12 +155,13 @@
 
         .carousel-track {
             display: flex;
+            gap: 10px;
             transition: transform 0.5s ease-in-out;
         }
 
         .carousel-item {
-            min-width: 150px;
-            margin: 5px;
+            flex: 0 0 auto;
+            width: 150px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -129,7 +169,7 @@
 
         .carousel-item img {
             width: 100%;
-            display: block;
+            height: auto;
         }
 
         .carousel-buttons {
@@ -168,9 +208,10 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="carousel.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-            <a href="buynow.html" class="cta">BUY NOW</a>
+            <a href="sparty_memory.html">Memory Game</a>
+            <a href="sparty_gameshow.html">Game Show</a>
+            <a href="sparty_challenge.html">Challenge</a>
+            <a href="sparty_showcase.html">Showcase</a>
         </nav>
     </header>
 
@@ -182,10 +223,17 @@
         </div>
     </section>
 
+    <div class="cta-section">
+        <a href="sparty_memory.html">Play the Memory Game</a>
+        <a href="sparty_gameshow.html">Sparty Game Show</a>
+        <a href="sparty_challenge.html">Sparty Challenge Arena</a>
+        <a href="sparty_showcase.html">Sparty Showcase</a>
+    </div>
+
     <div class="carousel-container">
         <button class="carousel-button" id="prevBtn">&lt;</button>
         <div class="carousel-track" id="carouselTrack">
-            <!-- Images dynamically added by JavaScript -->
+            <!-- Images dynamically added via JavaScript -->
         </div>
         <button class="carousel-button" id="nextBtn">&gt;</button>
     </div>
@@ -212,10 +260,10 @@
 
         // Populate carousel
         images.forEach(image => {
-            const imgElement = document.createElement('div');
-            imgElement.classList.add('carousel-item');
-            imgElement.innerHTML = `<img src="${image}" alt="Sparty Image">`;
-            carouselTrack.appendChild(imgElement);
+            const imgDiv = document.createElement('div');
+            imgDiv.classList.add('carousel-item');
+            imgDiv.innerHTML = `<img src="${image}" alt="Sparty Image">`;
+            carouselTrack.appendChild(imgDiv);
         });
 
         function updateCarousel() {
