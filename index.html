@@ -6,48 +6,137 @@
     <title>Spartacus Website</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Additional Styles for Modal and Carousel */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 600px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            overflow: hidden;
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #f8f8ff;
+            --accent-color: #d4bfff;
+            --text-color: #333;
+            --button-color: #9b5de5;
+            --button-hover: #6f42c1;
         }
 
-        .modal img {
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a.cta {
+            background-color: var(--button-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a.cta:hover {
+            background-color: var(--button-hover);
+        }
+
+        .carousel-container {
+            margin: 40px auto;
+            width: 90%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .carousel-item img {
             width: 100%;
             height: auto;
         }
 
-        .modal-close {
+        .carousel-buttons {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #333;
-            cursor: pointer;
-            z-index: 1001;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
         }
 
-        .modal-overlay {
+        .carousel-button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .carousel-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
         }
     </style>
 </head>
@@ -65,81 +154,47 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Fly High with Spartacus</h1>
-            <a href="about.html" class="button">Learn More</a>
-        </div>
-    </section>
-
     <div class="carousel-container">
         <button class="carousel-button" id="prevBtn">&lt;</button>
         <div class="carousel-track" id="carouselTrack"></div>
         <button class="carousel-button" id="nextBtn">&gt;</button>
     </div>
 
-    <div class="content-section">
-        <h2>See the Meatball</h2>
-        <p>Ready to see Spartacus's full gallery of iconic moments? Check out the full collection!</p>
-        <a href="carousel.html" class="button">Explore Now</a>
+    <div class="lightbox" id="lightbox">
+        <img id="lightboxImage" src="" alt="Large View">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
     </div>
 
     <footer>
         <p>&copy; 2024 Spartacus Website. All Rights Reserved.</p>
     </footer>
 
-    <!-- Modal for Enlarged Image -->
-    <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal" id="modal">
-        <button class="modal-close" id="modalClose">&times;</button>
-        <img src="" alt="Enlarged Image" id="modalImage">
-    </div>
-
     <script>
         const images = [
-            'boxingsparty.jpg', 'flyingsparty.jpg', 'flyspartycasino.jpg', 'ghandisparty.png',
-            'goldmedalsparty.jpg', 'hippysparty.jpg', 'hungrysparty.jpg', 'myimage.jpg',
-            'spartacus_sad.jpg', 'spartyET.jpg', 'spartybday.jpg', 'spartybench.jpg',
-            'spartydog.png', 'spartygump.jpg', 'spartygump2.jpg', 'spartyhotdog.jpg',
-            'spartyinspace.jpg', 'spartyjacked.jpg', 'spartypatriot.jpg', 'spartypyramid.jpg',
-            'spartyrocky.jpg', 'spartyspacesalami.jpg', 'spartytitanic.jpg', 'spartytravolta.jpg',
-            'tomsparty.jpg'
+            'boxingsparty.jpg', 'flyingsparty.jpg', 'spartyET.jpg', 'spartyhotdog.jpg'
         ];
 
         const carouselTrack = document.getElementById('carouselTrack');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modalImage');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalClose = document.getElementById('modalClose');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
         let currentIndex = 0;
-        let startX, moveX;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-        // Populate carousel
         images.forEach(image => {
             const imgDiv = document.createElement('div');
             imgDiv.classList.add('carousel-item');
             imgDiv.innerHTML = `<img src="${image}" alt="Sparty Image">`;
             carouselTrack.appendChild(imgDiv);
 
-            // Open image in modal on click
             imgDiv.addEventListener('click', () => {
-                modalImage.src = image;
-                modal.style.display = 'block';
-                modalOverlay.style.display = 'block';
+                lightboxImage.src = image;
+                lightbox.style.display = 'flex';
             });
         });
-
-        // Close modal
-        modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', closeModal);
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modalOverlay.style.display = 'none';
-        }
 
         function updateCarousel() {
             const itemWidth = document.querySelector('.carousel-item').offsetWidth;
@@ -156,22 +211,18 @@
             updateCarousel();
         });
 
-        // Touch events for swipe
         carouselTrack.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
+            touchStartX = e.changedTouches[0].screenX;
         });
 
-        carouselTrack.addEventListener('touchmove', (e) => {
-            moveX = e.touches[0].clientX - startX;
+        carouselTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextBtn.click();
+            if (touchEndX - touchStartX > 50) prevBtn.click();
         });
 
-        carouselTrack.addEventListener('touchend', () => {
-            if (moveX > 50 && currentIndex > 0) {
-                currentIndex--;
-            } else if (moveX < -50 && currentIndex < images.length - 4) {
-                currentIndex++;
-            }
-            updateCarousel();
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
         });
     </script>
 </body>
