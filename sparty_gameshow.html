@@ -155,8 +155,8 @@
         <div class="quiz-section">
             <h3>Sparty Trivia: What is Sparty's greatest achievement?</h3>
             <div class="quiz-options">
-                <button onclick="showAnswer('correct')">Bench pressing 500 lbs of catnip</button>
-                <button onclick="showAnswer('wrong')">Winning a dog race</button>
+                <button onclick="showAnswer('correct')">Never once pooping in the litter box</button>
+                <button onclick="showAnswer('wrong')">sleeping for 17 hours straight</button>
                 <button onclick="showAnswer('wrong')">Eating 100 pickles</button>
             </div>
             <p id="quiz-feedback"></p>
@@ -171,12 +171,12 @@
     <script>
         const wheelResult = document.getElementById("wheel-result");
         const achievements = [
-            "Won the Golden Paw award!",
-            "Bench pressed 500 lbs of catnip!",
-            "Conquered the Moon in style!",
-            "Outran Usain Bolt!",
-            "Saved the world from dog overlords!",
-            "Ate 50 hotdogs in 5 minutes!"
+            "Killed Hitler!",
+            "Never once pooping in the litter box",
+            "Got lost in the backyard for 4 days!",
+            "Outran a sleeping turtle!",
+            "Threw up Tuna in Will's room",
+            "Meow'd at a door for 9 hours"
         ];
 
         function spinWheel() {
@@ -187,7 +187,7 @@
         function showAnswer(answer) {
             const feedback = document.getElementById("quiz-feedback");
             if (answer === "correct") {
-                feedback.textContent = "🎉 Correct! Sparty is the strongest cat alive! 🎉";
+                feedback.textContent = "🎉 Correct! Sparty only poops the floor! 🎉";
             } else {
                 feedback.textContent = "❌ Wrong! Try again. Sparty disapproves. ❌";
             }
